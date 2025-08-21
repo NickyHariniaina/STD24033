@@ -8,9 +8,9 @@ paths:
     get:
       description: Return a String pong
       responses:
-      "200":
-        content:
-          text/plain:
-            schema:
-              type: string
-              example: pong
+        "200":
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: pong
