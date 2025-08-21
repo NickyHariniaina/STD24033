@@ -6,9 +6,10 @@ info:
 paths:
   /ping:
     get:
-      description: Return a String pong
+      description: Should return a String pong
       responses:
         "200":
+          description: Get pong as return value
           content:
             text/plain:
               schema:
