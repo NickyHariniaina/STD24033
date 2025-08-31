@@ -1,21 +1,60 @@
 openapi: 3.0.0
 info:
-  title: JSON intro.
+  title: User List
+  description: An API to show a list of users in a page
   version: 1.0.0
+  contact:
+    name: NickyHariniaina
+    email: nickyharini1na@gmail.com 
+  license:
+    name: MIT
+
+servers:
+  - url: http://localhost:8080
+    description: Local host URL
+
 paths:
   /users:
     get:
-      summary: Get all users
+      summary: Show a list of counted users in a page
+      tags:
+        - UserList
       parameters:
-        - in: query
-          name: page
-          schema:
-            type: string
+        - name: page
+          in: query
           required: false
           description: Number of page
-        - in: query
-          name: size
           schema:
-            type: string
-          required: false
-          description: Number of users in a page
+            type: integer
+            minimum: 1
+      responses:
+        '200':
+          description: A list of users.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name: 
+                      type: string
+                    email:
+                      type: string
+              example:
+                - id: 1
+                  name: Alice
+                  email: Alice@gmail.com
+        '400':
+          description: A bad types error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error: 
+                    type: string
+              example:
+                error: Bad types for provided query parameters
