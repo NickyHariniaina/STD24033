@@ -31,6 +31,24 @@ paths:
 
 components:
   schemas:
+    Order:
+      type: object
+      properties:
+        identifier:
+          type: integer
+        customer_name:
+          type: string
+        creation_datetime:
+          type: string
+          format: datetime
+        total_amount:
+          type: integer
+          format: float
+      example:
+        identifier: 1
+        customer_name: Nicky
+        creation_datetime: 2025-09-01 09:43
+        total_amount: 4000.45
     Product:
       type: object
       properties:
