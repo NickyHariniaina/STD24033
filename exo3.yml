@@ -5,7 +5,7 @@ info:
   version: 1.0.0
   contact:
     name: NickyHariniaina
-    email: nickyharini1na@gmail.com 
+    email: nickyharini1na@gmail.com
   license:
     name: MIT
 
@@ -18,14 +18,14 @@ paths:
     get:
       summary: Get all tasks
       responses:
-        '200':
+        "200":
           description: List of tasks
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Task'
+                  $ref: "#/components/schemas/Task"
 
     post:
       summary: Create new tasks
@@ -36,37 +36,37 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/Task'
+                $ref: "#/components/schemas/Task"
       responses:
-        '201':
+        "201":
           description: List of created tasks
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Task'
+                  $ref: "#/components/schemas/Task"
 
     delete:
       summary: Delete multiple tasks
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                type: integer
-                description: Task ID to delete
+      parameters:
+        - name: ids
+          description: A list of tasks id
+          in: query
+          required: true
+          schema:
+            type: array
+            items:
+              type: integer
       responses:
-        '200':
+        "200":
           description: List of deleted tasks
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Task'
+                  $ref: "#/components/schemas/Task"
 
   /tasks/{id}:
     get:
@@ -78,13 +78,13 @@ paths:
           schema:
             type: integer
       responses:
-        '200':
+        "200":
           description: Task found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Task'
-        '404':
+                $ref: "#/components/schemas/Task"
+        "404":
           description: Not found
           content:
             application/json:
@@ -104,13 +104,13 @@ paths:
           schema:
             type: integer
       responses:
-        '200':
+        "200":
           description: Task deleted
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Task'
-        '404':
+                $ref: "#/components/schemas/Task"
+        "404":
           description: not found
           content:
             application/json:
