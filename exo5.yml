@@ -30,7 +30,52 @@ paths:
                   $ref: "#/components/examples/EmptyProduct"
                 productList:
                   $ref: "#/components/examples/ManyProduct"
-
+  /orders:
+    get:
+      tags:
+        - Orders
+      summary: A list of orders
+      responses:
+        "200":
+          description: A list of orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Order"
+              examples:
+                AllOrders:
+                  value:
+                    - identifier: 2
+                      customer_name: Nicky
+                      creation_datetime: 2025-09-01 09:53
+                      total_amount: 399.3
+                    - identifier: 3
+                      customer_name: Hariniaina
+                      creation_datetime: 2025-09-01 09:53
+                      total_amount: 233.9
+    post:
+      tags:
+        - Orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Order"
+      summary: Create an order
+      responses:
+        "201":
+          description: Create a reponse
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                example:
+                  message: Order created
 components:
   schemas:
     Order:
