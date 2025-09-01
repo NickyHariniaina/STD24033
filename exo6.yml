@@ -68,3 +68,10 @@ components:
         - $ref: "#/components/schemas/PersonalInfo"
         - $ref: "#/components/schemas/Address"
         - $ref: "#/components/schemas/Preferences"
+  paramaters:
+    IdParam:
+      name: id
+      in: path
+      description: identifier
+      type: integer
+      example: 2
