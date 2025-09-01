@@ -56,6 +56,8 @@ paths:
                       creation_datetime: 2025-09-01 09:53
                       total_amount: 233.9
     post:
+      security:
+        - BasicAuthentication: []
       tags:
         - Orders
       requestBody:
@@ -112,6 +114,21 @@ components:
         expiration_datetime: 2025-09-01 09:20
         price: 23.45
   parameters:
+    PageQuery:
+      name: page
+      in: query
+      description: The page number
+      required: false
+      schema:
+        type: integer
+      example: 2
+    SizeQuery:
+      name: size
+      description: The number of elements in a page
+      required: false
+      schema:
+        type: integer
+      example: 10
     LimitQuery:
       name: limit
       description: Maximum number of elements
@@ -140,3 +157,7 @@ components:
     EmptyProduct:
       summary: An empty list of product
       value: []
+  securitySchemes:
+    BasicAuthentication:
+      type: http
+      scheme: basic
