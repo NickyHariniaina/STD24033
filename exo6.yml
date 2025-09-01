@@ -13,17 +13,118 @@ servers:
 
 paths:
   /users/{id}:
-    summary: Get user by id with all information
-    paramaters:
-      - $ref: "#/components/paramaters/IdParam"
-    responses:
-      "200":
-        description: Get user by id
+    get:
+      summary: Get user by id with all information
+      parameters:
+        - $ref: "#/components/parameters/IdParam"
+      responses:
+        "200":
+          description: Get user by id
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+              examples:
+                userExample:
+                  $ref: "#/components/examples/UserProfileExample"
+  /users:
+    post:
+      summary: Create users without identifier
+      requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UserProfile"
-            example:
+              type: array
+              items:
+                $ref: "#/components/schemas/CreateUserProfile"
+            examples:
+              userExample:
+                $ref: "#/components/examples/CreateUserProfileExample"
+      responses:
+        "201":
+          description: List of created user
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CreateUserProfile"
+              examples:
+                userExample:
+                  $ref: "#/components/examples/CreateUserProfileExample"
+  /users/{id}/personalInfo:
+    put:
+      summary: Update only the personal information
+      parameters:
+        - $ref: "#/components/parameters/IdParam"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PersonalInfo"
+            examples:
+              personalInfoExample:
+                $ref: "#/components/examples/PersonalInfoExample"
+      responses:
+        "200":
+          description: Updated personal information
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PersonalInfo"
+              examples:
+                personalInfoExample:
+                  $ref: "#/components/examples/PersonalInfoExample"
+
+  /users/{id}/address:
+    put:
+      summary: Update only the address
+      parameters:
+        - $ref: "#/components/parameters/IdParam"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Address"
+            examples:
+              addressExample:
+                $ref: "#/components/examples/AddressExample"
+      responses:
+        "200":
+          description: Updated address
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Address"
+              examples:
+                addressExample:
+                  $ref: "#/components/examples/AddressExample"
+  /users/{id}/preferences:
+    put:
+      summary: Update only the preferences
+      parameters:
+        - $ref: "#/components/parameters/IdParam"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Preferences"
+            examples:
+              preferencesExample:
+                $ref: "#/components/examples/PreferencesExample"
+      responses:
+        "200":
+          description: Updated preferences
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Preferences"
+              examples:
+                preferencesExample:
+                  $ref: "#/components/examples/PreferencesExample"
 
 components:
   examples:
@@ -53,13 +154,15 @@ components:
         needs_newsletter: true
         language: fr
     AddressExample:
-      address_street: lot II 45
-      address_city: Ivandry
-      address_country: Antananarivo
-      address_postal_code: 101
+      value:
+        address_street: lot II 45
+        address_city: Ivandry
+        address_country: Antananarivo
+        address_postal_code: 101
     PreferencesExample:
-      needs_newsletter: true
-      language: fr
+      value:
+        needs_newsletter: true
+        language: fr
   schemas:
     PersonalInfo:
       type: object
@@ -116,10 +219,12 @@ components:
         - $ref: "#/components/schemas/PersonalInfo"
         - $ref: "#/components/schemas/Address"
         - $ref: "#/components/schemas/Preferences"
-  paramaters:
+  parameters:
     IdParam:
       name: id
       in: path
       description: identifier
-      type: integer
-      example: 2
+      required: true
+      schema:
+        type: integer
+        example: 2
