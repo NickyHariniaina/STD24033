@@ -1,0 +1,64 @@
+openapi: 3.0.0
+info:
+  title: Product Search API
+  description: An API to search for products
+  version: 1.0.0
+  contact:
+    name: NickyHariniaina
+    email: nickyharini1na@gmail.com
+
+servers:
+  - url: http://localhost:3000
+    description: LocalHost server
+
+paths:
+  /products:
+    get:
+      summary: Get a list of products found
+      parameters:
+        - $ref: "#/components/parameters/LimitQuery"
+        - $ref: "#/components/parameters/SearchQuery"
+      responses:
+        "200":
+          description: A list of products
+          content:
+            application/json:
+              examples:
+                emptyList:
+                  $ref: "#/components/examples/EmptyProduct"
+                productList:
+                  $ref: "#/components/examples/ManyProduct"
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        name:
+          type: string
+        expiration_datetime:
+          type: string
+          format: date-time
+        price:
+          type: number
+          format: float
+      example:
+        name: Iphone 23
+        expiration_datetime: 2025-09-01 09:20
+        price: 23.45
+  parameters:
+    LimitQuery:
+      name: limit
+      description: Maximum number of elements
+      in: query
+      required: false
+      schema:
+        type: integer
+      example: 23
+    SearchQuery:
+      name: q
+      in: query
+      description: A search term
+      schema:
+        type: string
+      example: phone
