@@ -239,7 +239,10 @@ components:
           example: true
         language:
           type: string
-          enum: [mg, fr, end]
+          enum:
+            - mg
+            - fr
+            - eng
     UserProfile:
       allOf:
         - type: object

@@ -28,7 +28,6 @@ paths:
                   $ref: "#/components/examples/EmptyProduct"
                 productList:
                   $ref: "#/components/examples/ManyProduct"
-
 components:
   schemas:
     Product:

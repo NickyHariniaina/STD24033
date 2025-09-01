@@ -72,11 +72,7 @@ paths:
     get:
       summary: Get task by ID
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
+        - $ref: "#/components/parameters/Id"
       responses:
         "200":
           description: Task found
@@ -98,11 +94,7 @@ paths:
     delete:
       summary: Delete a task by ID
       parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
+        - $ref: "#/components/parameters/Id"
       responses:
         "200":
           description: Task deleted
@@ -120,7 +112,6 @@ paths:
                   message:
                     type: string
                     example: Task not found
-
 components:
   schemas:
     Task:
@@ -139,3 +130,11 @@ components:
         - id
         - title
         - completed
+  parameters:
+    Id:
+      name: id
+      in: path
+      description: Id of a task
+      required: true
+      schema:
+        type: integer
