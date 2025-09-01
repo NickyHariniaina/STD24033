@@ -7,6 +7,12 @@ info:
     name: NickyHariniaina
     email: nickyharini1na@gmail.com
 
+servers:
+  - url: http://localhost:3000
+    description: LocalHost server
+
+paths:
+
 components:
   schemas:
     Product:
@@ -24,3 +30,32 @@ components:
         name: Iphone 23
         expiration_datetime: 2025-09-01 09:20
         price: 23.45
+  parameters:
+    LimitQuery:
+      name: limit
+      description: Maximum number of elements
+      in: query
+      required: false
+      schema:
+        type: integer
+      example: 23
+    SearchQuery:
+      name: q
+      in: query
+      description: A search term
+      schema:
+        type: string
+      example: phone
+  examples:
+    ManyProduct:
+      summary: A list of product found
+      value:
+        - name: Laptop 23nd generation
+          expiration_datetime: 2025-09-01 09:29
+          price: 30000.34
+        - name: Iphone 75
+          expiration_datetime: 2025-09-03 09:34
+          price: 23.45
+    EmptyProduct:
+      summary: An empty list of product
+      value: []
