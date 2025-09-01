@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  title: Product Search API
+  description: An API to search for products
+  version: 1.0.0
+  contact:
+    name: NickyHariniaina
+    email: nickyharini1na@gmail.com
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        name:
+          type: string
+        expiration_datetime:
+          type: string
+          format: date-time
+        price:
+          type: number
+          format: float
+      example:
+        name: Iphone 23
+        expiration_datetime: 2025-09-01 09:20
+        price: 23.45
