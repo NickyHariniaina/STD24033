@@ -11,7 +11,55 @@ servers:
   - url: http://localhost:8080
     description: Localhost servers
 
+paths:
+  /users/{id}:
+    summary: Get user by id with all information
+    paramaters:
+      - $ref: "#/components/paramaters/IdParam"
+    responses:
+      "200":
+        description: Get user by id
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserProfile"
+            example:
+
 components:
+  examples:
+    UserProfileExample:
+      value:
+        identifier: 1
+        first_name: Nicky
+        last_name: Hariniaina
+        birthdate: 2007-04-12
+        email: nickyharini1na@gmail.com
+        address_street: lot II 45
+        address_city: Ivandry
+        address_country: Antananarivo
+        address_postal_code: 101
+        needs_newsletter: true
+        language: fr
+    CreateUserProfileExample:
+      value:
+        first_name: Nicky
+        last_name: Hariniaina
+        birthdate: 2007-04-12
+        email: nickyharini1na@gmail.com
+        address_street: lot II 45
+        address_city: Ivandry
+        address_country: Antananarivo
+        address_postal_code: 101
+        needs_newsletter: true
+        language: fr
+    AddressExample:
+      address_street: lot II 45
+      address_city: Ivandry
+      address_country: Antananarivo
+      address_postal_code: 101
+    PreferencesExample:
+      needs_newsletter: true
+      language: fr
   schemas:
     PersonalInfo:
       type: object
