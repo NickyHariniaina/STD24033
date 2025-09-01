@@ -37,9 +37,27 @@ paths:
               type: array
               items:
                 $ref: "#/components/schemas/CreateUserProfile"
-            examples:
-              userExample:
-                $ref: "#/components/examples/CreateUserProfileExample"
+            example:
+              - first_name: Nicky
+                last_name: Hariniaina
+                birthdate: 2007-04-12
+                email: nickyharini1na@gmail.com
+                address_street: lot II 45
+                address_city: Ivandry
+                address_country: Antananarivo
+                address_postal_code: 101
+                needs_newsletter: true
+                language: fr
+              - first_name: John
+                last_name: Doe
+                birthdate: 2007-04-12
+                email: jD@gmail.com
+                address_street: lot II 45
+                address_city: Ivandry
+                address_country: Antananarivo
+                address_postal_code: 101
+                needs_newsletter: true
+                language: fr
       responses:
         "201":
           description: List of created user
@@ -128,6 +146,13 @@ paths:
 
 components:
   examples:
+    PersonalInfoExample:
+      value:
+        first_name: Nicky
+        last_name: Hariniaina
+        birthdate: 2007-04-12
+        email: nickyharini1na@gmail.com
+
     UserProfileExample:
       value:
         identifier: 1
@@ -143,16 +168,27 @@ components:
         language: fr
     CreateUserProfileExample:
       value:
-        first_name: Nicky
-        last_name: Hariniaina
-        birthdate: 2007-04-12
-        email: nickyharini1na@gmail.com
-        address_street: lot II 45
-        address_city: Ivandry
-        address_country: Antananarivo
-        address_postal_code: 101
-        needs_newsletter: true
-        language: fr
+        - first_name: Nicky
+          last_name: Hariniaina
+          birthdate: 2007-04-12
+          email: nickyharini1na@gmail.com
+          address_street: lot II 45
+          address_city: Ivandry
+          address_country: Antananarivo
+          address_postal_code: 101
+          needs_newsletter: true
+          language: fr
+        - first_name: John
+          last_name: Doe
+          birthdate: 2007-04-12
+          email: jD@gmail.com
+          address_street: lot II 45
+          address_city: Ivandry
+          address_country: Antananarivo
+          address_postal_code: 101
+          needs_newsletter: true
+          language: fr
+
     AddressExample:
       value:
         address_street: lot II 45
