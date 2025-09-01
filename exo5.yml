@@ -35,6 +35,9 @@ paths:
       tags:
         - Orders
       summary: A list of orders
+      parameters:
+        - $ref: "#/components/parameters/SizeQuery"
+        - $ref: "#/components/parameters/PageQuery"
       responses:
         "200":
           description: A list of orders
@@ -124,6 +127,7 @@ components:
       example: 2
     SizeQuery:
       name: size
+      in: query
       description: The number of elements in a page
       required: false
       schema:
