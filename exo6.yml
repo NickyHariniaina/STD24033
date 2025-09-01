@@ -1,0 +1,70 @@
+openapi: 3.0.0
+info:
+  title: Best Practice OAS
+  description: An OAS for BP
+  version: 1.0.0
+  contact:
+    name: NickyHariniaina
+    email: nickyharini1na@gmail.com
+
+servers:
+  - url: http://localhost:8080
+    description: Localhost servers
+
+components:
+  schemas:
+    PersonalInfo:
+      type: object
+      properties:
+        first_name:
+          type: string
+          example: Nicky
+        last_name:
+          type: string
+          example: Hariniaina
+        birthdate:
+          type: string
+          format: date
+          example: 2007-04-12
+        email:
+          type: string
+          example: nickyharini1na@gmail.com
+    Address:
+      type: object
+      properties:
+        address_street:
+          type: string
+          example: lot II 45
+        address_city:
+          type: string
+          example: Ivandry
+        address_country:
+          type: string
+          example: Antananarivo
+        address_postal_code:
+          type: integer
+          example: 101
+    Preferences:
+      type: object
+      properties:
+        needs_newsletter:
+          type: boolean
+          example: true
+        language:
+          type: string
+          enum: [mg, fr, end]
+    UserProfile:
+      allOf:
+        - type: object
+          properties:
+            identifier:
+              type: integer
+              example: 1
+        - $ref: "#/components/schemas/PersonalInfo"
+        - $ref: "#/components/schemas/Address"
+        - $ref: "#/components/schemas/Preferences"
+    CreateUserProfile:
+      allOf:
+        - $ref: "#/components/schemas/PersonalInfo"
+        - $ref: "#/components/schemas/Address"
+        - $ref: "#/components/schemas/Preferences"
